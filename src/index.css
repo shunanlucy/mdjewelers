@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "DM Sans", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", "DM Sans", Arial, sans-serif;
+  background: #f8f7fc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, a, input, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid #5f259f;
+  outline-offset: 2px;
+}
+
+/* PhonePe & Google Pay Button Tokens */
+.btn-phonepe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-height: 44px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #5f259f 0%, #4e1d87 100%);
+  color: #ffffff;
+  padding: 0.85rem 1.45rem;
+  box-shadow: 0 8px 20px -4px rgba(95, 37, 159, 0.35);
+  transition: all 200ms ease;
+}
+
+.btn-phonepe:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  box-shadow: 0 12px 24px -5px rgba(95, 37, 159, 0.45);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-height: 44px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  padding: 0.85rem 1.45rem;
+  box-shadow: 0 8px 20px -4px rgba(217, 119, 6, 0.35);
+  transition: all 200ms ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  box-shadow: 0 12px 24px -5px rgba(217, 119, 6, 0.45);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-height: 44px;
+  cursor: pointer;
+  background: #25d366;
+  color: #ffffff;
+  padding: 0.85rem 1.4rem;
+  box-shadow: 0 6px 18px -4px rgba(37, 211, 102, 0.4);
+  transition: all 200ms ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  background: #20ba5a;
+  box-shadow: 0 10px 22px -5px rgba(37, 211, 102, 0.5);
+}
+
+.btn-outline-fintech {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  min-height: 44px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+  padding: 0.85rem 1.35rem;
+  transition: all 150ms ease;
+}
+
+.btn-outline-fintech:hover {
+  border-color: #5f259f;
+  color: #5f259f;
+  background: #faf8ff;
+  transform: translateY(-1px);
+}
+
+/* Card Surface Tokens */
+.card-fintech {
+  background: #ffffff;
+  border: 1px solid #ede9fe;
+  box-shadow: 0 4px 20px -4px rgba(95, 37, 159, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  border-radius: 1.25rem;
+}
+
+.card-fintech-elevated {
+  background: #ffffff;
+  border: 1px solid #e0d7f5;
+  box-shadow: 0 16px 40px -8px rgba(95, 37, 159, 0.1), 0 2px 8px -2px rgba(0, 0, 0, 0.03);
+  border-radius: 1.5rem;
+}
+
+/* Form inputs (PhonePe style) */
+.form-input {
+  display: block;
+  width: 100%;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+}
+
+.form-input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+  outline: none;
+}
+
+/* Range Slider (Fintech Blue track + Blue Thumb) */
+.gold-range {
+  appearance: none;
+  height: 7px;
+  cursor: pointer;
+  border-radius: 999px;
+  background: #e8f0fe;
+}
+
+.gold-range::-webkit-slider-thumb {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border: 3px solid #ffffff;
+  border-radius: 999px;
+  background: #1a73e8;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.45);
+  transition: transform 150ms ease;
+}
+
+.gold-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.gold-range::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 999px;
+  background: #1a73e8;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.45);
+}
+
+/* Animation utilities */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.5s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

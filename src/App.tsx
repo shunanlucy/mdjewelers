@@ -44,6 +44,7 @@ import photoSafeProcess from "./assets/photo-safe-process.png";
 import logoMrajWordmark from "./assets/mraj-wordmark.png";
 import serviceLockedGold from "./assets/service-locked-gold.jpg";
 import serviceVintageGold from "./assets/service-vintage-gold.jpg";
+import { AdminPanel, GoldRatesConfig } from "./AdminPanel";
 
 // Live gold rates (indicative Indian market rates per gram)
 const GOLD_RATES = {
@@ -216,6 +217,32 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [tickerIndex, setTickerIndex] = useState(0);
   const [selectedCity, setSelectedCity] = useState("Kolkata");
+  const [adminOpen, setAdminOpen] = useState(false);
+
+  // Dynamic Gold Rates (managed via Admin Panel)
+  const [goldRates, setGoldRates] = useState<GoldRatesConfig>(() => {
+    const saved = localStorage.getItem("mraj_gold_rates");
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch {
+        return { "24K": 7850, "22K": 7210, "20K": 6550, "18K": 5910, silver: 94 };
+      }
+    }
+    return { "24K": 7850, "22K": 7210, "20K": 6550, "18K": 5910, silver: 94 };
+  });
+
+  // Check URL hash for #admin
+  useEffect(() => {
+    const checkHash = () => {
+      if (window.location.hash === "#admin") {
+        setAdminOpen(true);
+      }
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
 
   // Dedicated Quick Inquiry Modal for the 2 Action Cards ('Check Old Value' & 'Gold Loan Settlement')
   const [quickServiceModal, setQuickServiceModal] = useState<{
@@ -250,6 +277,28 @@ function App() {
   const handleQuickLeadSubmit = (e: FormEvent) => {
     e.preventDefault();
     setQuickLeadSubmitted(true);
+
+    // Save inquiry to Admin Leads
+    try {
+      const existing = JSON.parse(localStorage.getItem("mraj_customer_leads") || "[]");
+      const newLead = {
+        id: "lead-" + Date.now(),
+        createdAt: new Date().toISOString(),
+        name: quickLeadForm.name || "Website Customer",
+        phone: quickLeadForm.phone || "",
+        location: quickLeadForm.location,
+        serviceType:
+          quickServiceModal.category === "old_gold"
+            ? "Sell Old Gold & Jewellery"
+            : "Gold Loan Settlement",
+        status: "New",
+        notes: quickLeadForm.query,
+      };
+      localStorage.setItem("mraj_customer_leads", JSON.stringify([newLead, ...existing]));
+    } catch (err) {
+      console.error(err);
+    }
+
     const msg = encodeURIComponent(
       `Hello MRAJ JEWELERS, I want to submit a query:\n• Category: ${
         quickServiceModal.category === "old_gold" ? "Sell Old Gold & Silver" : "Gold Loan Settlement"
@@ -385,8 +434,8 @@ function App() {
     }
   };
 
-  // Calculations
-  const ratePerGram = GOLD_RATES[goldPurity];
+  // Calculations (Dynamic rates managed by Admin)
+  const ratePerGram = goldRates[goldPurity];
   const totalMarketValue = Math.round(goldGrams * ratePerGram);
   const netCashInHand = Math.max(0, totalMarketValue - loanAmount);
 
@@ -986,7 +1035,7 @@ function App() {
                 {/* Top Badges */}
                 <div className="absolute top-2 sm:top-3 left-2.5 sm:left-4 right-2.5 sm:right-4 flex items-center justify-between gap-1.5">
                   <span className="inline-flex items-center gap-1 rounded-full bg-[#0e0e11]/90 backdrop-blur-md px-2 sm:px-2.5 py-0.5 text-[9.5px] sm:text-xs font-bold text-[var(--gold-primary)] border border-[rgba(212,175,55,0.3)] shadow-sm">
-                    <Sparkles size={11} /> Live Rate: ₹7,210/g
+                    <Sparkles size={11} /> Live Rate: ₹{goldRates["22K"].toLocaleString("en-IN")}/g
                   </span>
                   <span className="rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-500/40 backdrop-blur-md px-2 py-0.5 text-[9.5px] sm:text-xs font-bold shadow-sm">
                     ⚡ ₹0 Advance Fee
@@ -1278,7 +1327,22 @@ function App() {
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-slate-500 text-center sm:text-left">
             <p>© 2025-2026 MRAJ JEWELERS. All rights reserved.</p>
-            <p>100% legal branch clearance process. We do not provide unauthorized pawn loans.</p>
+            <div className="flex items-center gap-3">
+              <p>100% legal branch clearance process.</p>
+              <span>•</span>
+              <a
+                href="#admin"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAdminOpen(true);
+                  window.location.hash = "admin";
+                }}
+                className="inline-flex items-center gap-1 text-[10.5px] font-semibold text-slate-400 hover:text-[var(--gold-light)] transition cursor-pointer"
+                title="Store Staff & Owner Login"
+              >
+                <Lock size={11} /> Staff / Admin Portal
+              </a>
+            </div>
           </div>
         </div>
       </footer>
@@ -1700,6 +1764,33 @@ function App() {
                   onSubmit={(e: FormEvent<HTMLFormElement>) => {
                     e.preventDefault();
                     setSubmitted(true);
+                    try {
+                      const formData = new FormData(e.currentTarget);
+                      const name = formData.get("name") as string;
+                      const phone = formData.get("phone") as string;
+                      const lender = formData.get("lender") as string;
+                      const grams = formData.get("grams") as string;
+                      const serviceType = formData.get("service_type") as string;
+                      const existing = JSON.parse(localStorage.getItem("mraj_customer_leads") || "[]");
+                      const newLeadEntry = {
+                        id: "lead-" + Date.now(),
+                        createdAt: new Date().toISOString(),
+                        name: name || "Website Inquiry",
+                        phone: phone || "",
+                        lender: lender || "Not specified",
+                        goldGrams: grams,
+                        serviceType:
+                          serviceType === "sell_old_gold"
+                            ? "Sell Old Gold"
+                            : serviceType === "partial_release"
+                            ? "Partial Gold Release"
+                            : "Gold Loan Settlement",
+                        status: "New",
+                      };
+                      localStorage.setItem("mraj_customer_leads", JSON.stringify([newLeadEntry, ...existing]));
+                    } catch (err) {
+                      console.error(err);
+                    }
                   }}
                 >
                   <div className="flex items-center gap-2 mb-2">
@@ -2012,6 +2103,20 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Owner & Staff Admin Portal Dashboard */}
+      {adminOpen && (
+        <AdminPanel
+          onClose={() => {
+            setAdminOpen(false);
+            if (window.location.hash === "#admin") {
+              history.pushState("", document.title, window.location.pathname + window.location.search);
+            }
+          }}
+          rates={goldRates}
+          onUpdateRates={(newRates) => setGoldRates(newRates)}
+        />
+      )}
     </main>
   );
 }

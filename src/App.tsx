@@ -682,12 +682,6 @@ function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0e0e11] via-[#0e0e11]/25 to-black/30 pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(14,14,17,0.7)_100%)] pointer-events-none" />
 
-            {/* Top Badge */}
-            <div className="absolute top-3 sm:top-5 left-3 sm:left-6 flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0e0e11]/85 backdrop-blur-md px-3 py-1 text-[10px] min-[360px]:text-xs font-bold text-[var(--gold-light)] border border-[rgba(212,175,55,0.3)] shadow-md">
-                <Sparkles size={12} className="text-[var(--gold-primary)]" /> MRAJ JEWELERS Official Display
-              </span>
-            </div>
 
             {/* Bottom Content (Clean & Dignified, No Sound / Controls) */}
             <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6">

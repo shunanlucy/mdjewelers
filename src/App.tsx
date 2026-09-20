@@ -1362,82 +1362,82 @@ function App() {
               </button>
 
               {/* Header */}
-              <div className="flex items-center gap-3 pr-8 pb-3 border-b border-[rgba(212,175,55,0.18)]">
-                <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[rgba(212,175,55,0.14)] text-[var(--gold-primary)] border border-[rgba(212,175,55,0.3)] shadow-md shrink-0">
-                  <Scale size={22} />
+              <div className="flex items-center gap-2.5 sm:gap-3 pr-8 pb-2.5 border-b border-[rgba(212,175,55,0.18)]">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-[rgba(212,175,55,0.14)] text-[var(--gold-primary)] border border-[rgba(212,175,55,0.3)] shadow-md shrink-0">
+                  <Scale size={18} />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-serif text-lg min-[360px]:text-xl sm:text-2xl font-bold text-white leading-tight">
+                    <h3 className="font-serif text-base min-[360px]:text-lg sm:text-xl font-bold text-white leading-tight">
                       Settlement Estimator
                     </h3>
-                    <span className="hidden min-[420px]:inline-flex items-center gap-1 rounded-full bg-emerald-950/80 px-2 py-0.5 text-[10px] font-extrabold text-emerald-400 border border-emerald-500/40">
-                      ⚡ Zero Advance Fee
+                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-950/80 px-2 py-0.5 text-[9.5px] font-extrabold text-emerald-400 border border-emerald-500/40">
+                      ⚡ 0% Fee
                     </span>
                   </div>
-                  <p className="text-[11px] min-[360px]:text-xs text-slate-400 mt-0.5">
-                    Live gold market rate par instant valuation & cash calculation
+                  <p className="text-[10.5px] sm:text-xs text-slate-400">
+                    Live market rate par instant valuation & hisaab
                   </p>
                 </div>
               </div>
 
               {/* 3 Calculator Modes (Tabs) */}
-              <div className="mt-4 grid grid-cols-3 gap-1.5 p-1 rounded-xl sm:rounded-2xl bg-[#121218] border border-[rgba(212,175,55,0.15)] text-center">
+              <div className="mt-3 grid grid-cols-3 gap-1.5 p-1 rounded-xl bg-[#121218] border border-[rgba(212,175,55,0.15)] text-center">
                 <button
                   type="button"
                   onClick={() => setCalcMode("cash")}
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 rounded-lg sm:rounded-xl text-[10.5px] min-[360px]:text-xs font-bold transition cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-1 rounded-lg text-xs font-bold transition cursor-pointer ${
                     calcMode === "cash"
                       ? "bg-[rgba(212,175,55,0.2)] text-[var(--gold-light)] border border-[rgba(212,175,55,0.35)] shadow-sm"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Wallet size={14} className={calcMode === "cash" ? "text-[var(--gold-primary)]" : ""} />
+                  <Wallet size={13} className={calcMode === "cash" ? "text-[var(--gold-primary)]" : ""} />
                   <span>Full Cash</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setCalcMode("partial")}
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 rounded-lg sm:rounded-xl text-[10.5px] min-[360px]:text-xs font-bold transition cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-1 rounded-lg text-xs font-bold transition cursor-pointer ${
                     calcMode === "partial"
                       ? "bg-[rgba(212,175,55,0.2)] text-[var(--gold-light)] border border-[rgba(212,175,55,0.35)] shadow-sm"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Scale size={14} className={calcMode === "partial" ? "text-[var(--gold-primary)]" : ""} />
+                  <Scale size={13} className={calcMode === "partial" ? "text-[var(--gold-primary)]" : ""} />
                   <span>Keep Gold</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setCalcMode("old_gold")}
-                  className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-2 px-1 rounded-lg sm:rounded-xl text-[10.5px] min-[360px]:text-xs font-bold transition cursor-pointer ${
+                  className={`flex items-center justify-center gap-1.5 py-1.5 px-1 rounded-lg text-xs font-bold transition cursor-pointer ${
                     calcMode === "old_gold"
                       ? "bg-[rgba(212,175,55,0.2)] text-[var(--gold-light)] border border-[rgba(212,175,55,0.35)] shadow-sm"
                       : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  <Sparkles size={14} className={calcMode === "old_gold" ? "text-[var(--gold-primary)]" : ""} />
+                  <Sparkles size={13} className={calcMode === "old_gold" ? "text-[var(--gold-primary)]" : ""} />
                   <span>Sell Old Gold</span>
                 </button>
               </div>
 
               {/* Gold Karat Purity Selector with Rate */}
-              <div className="mt-4">
-                <div className="flex items-center justify-between text-xs mb-1.5">
+              <div className="mt-3">
+                <div className="flex items-center justify-between text-xs mb-1">
                   <label className="font-bold text-slate-300">Gold Karat Purity</label>
-                  <span className="font-bold text-[var(--gold-primary)]">
-                    Rate: ₹{ratePerGram.toLocaleString("en-IN")}/g
+                  <span className="font-bold text-[var(--gold-primary)] text-xs">
+                    Live Rate: ₹{ratePerGram.toLocaleString("en-IN")}/g
                   </span>
                 </div>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-1.5">
                   {(["24K", "22K", "20K", "18K"] as const).map((karat) => (
                     <button
                       key={karat}
                       type="button"
                       onClick={() => setGoldPurity(karat)}
-                      className={`py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
+                      className={`py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                         goldPurity === karat
-                          ? "bg-[var(--gold-gradient)] text-black font-extrabold shadow-md scale-[1.02]"
+                          ? "bg-[var(--gold-gradient)] text-black font-extrabold shadow-md scale-[1.01]"
                           : "bg-[#121218] text-slate-300 border border-[rgba(212,175,55,0.15)] hover:border-[rgba(212,175,55,0.3)]"
                       }`}
                     >
@@ -1448,17 +1448,17 @@ function App() {
               </div>
 
               {/* Lender / Item Type Selector */}
-              <div className="mt-4">
-                <label className="text-xs font-bold text-slate-300 block mb-1.5">
+              <div className="mt-2.5">
+                <label className="text-xs font-bold text-slate-300 block mb-1">
                   {calcMode === "old_gold"
-                    ? "Gold / Silver Item Type (Kisko Bechna Chahte Hain?)"
-                    : "Where is your gold pledged? (Lender)"}
+                    ? "Item Type (Kisko Bechna Hai?)"
+                    : "Where is gold pledged? (Bank / Lender)"}
                 </label>
                 {calcMode === "old_gold" ? (
                   <select
                     value={oldGoldItemType}
                     onChange={(e) => setOldGoldItemType(e.target.value)}
-                    className="form-input text-xs sm:text-sm"
+                    className="form-input text-xs py-1.5"
                   >
                     <option value="Old Gold Jewellery" className="bg-[#181824] text-white">Old Gold Jewellery (Chain, Bangles, Rings, Necklace)</option>
                     <option value="Gold Bullion Coins & Bars" className="bg-[#181824] text-white">Gold Bullion Coins & Bars (999 / 916)</option>
@@ -1469,7 +1469,7 @@ function App() {
                   <select
                     value={selectedLender}
                     onChange={(e) => setSelectedLender(e.target.value)}
-                    className="form-input text-xs sm:text-sm"
+                    className="form-input text-xs py-1.5"
                   >
                     {lendersList.map((lender) => (
                       <option key={lender.name} value={lender.name} className="bg-[#181824] text-white">
@@ -1480,16 +1480,13 @@ function App() {
                 )}
               </div>
 
-              {/* Gold Weight Input & Slider + Presets */}
-              <div className="mt-4">
-                <div className="flex items-center justify-between text-xs mb-1.5 gap-2">
-                  <div>
-                    <label className="font-bold text-slate-300">
-                      {calcMode === "old_gold" ? "Approx Gold Weight" : "Total Pledged Gold Weight"}
-                    </label>
-                    <span className="text-[10px] text-slate-400 block">Type custom grams or choose below</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 rounded-xl bg-[#0e0e11] px-2.5 py-1 border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shadow-inner transition shrink-0">
+              {/* Gold Weight Card */}
+              <div className="mt-2.5 rounded-xl bg-[#121218] border border-[rgba(212,175,55,0.2)] p-2.5 sm:p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <label className="text-xs font-bold text-slate-300">
+                    {calcMode === "old_gold" ? "Gold Weight" : "Total Pledged Gold Weight"}
+                  </label>
+                  <div className="flex items-center gap-1 bg-[#0a0a0e] px-2.5 py-1 rounded-lg border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shrink-0 transition">
                     <input
                       type="number"
                       inputMode="decimal"
@@ -1501,26 +1498,10 @@ function App() {
                         setGoldGrams(isNaN(val) ? 0 : val);
                       }}
                       placeholder="0"
-                      className="w-16 sm:w-20 bg-transparent text-right text-xs sm:text-sm font-black text-[var(--gold-light)] outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      className="w-16 bg-transparent text-right text-xs sm:text-sm font-extrabold text-[var(--gold-light)] outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                     />
-                    <span className="text-[11px] sm:text-xs font-bold text-slate-300">grams</span>
+                    <span className="text-[11px] font-bold text-slate-400">grams</span>
                   </div>
-                </div>
-                <div className="grid grid-cols-4 gap-1.5 mb-2.5">
-                  {[15, 45, 100, 200].map((preset) => (
-                    <button
-                      key={preset}
-                      type="button"
-                      onClick={() => setGoldGrams(preset)}
-                      className={`py-1.5 rounded-lg text-[11px] font-semibold transition cursor-pointer ${
-                        goldGrams === preset
-                          ? "bg-[rgba(212,175,55,0.25)] text-[var(--gold-light)] border border-[rgba(212,175,55,0.4)]"
-                          : "bg-[#121218] text-slate-400 border border-[rgba(212,175,55,0.12)] hover:border-[rgba(212,175,55,0.2)]"
-                      }`}
-                    >
-                      {preset}g
-                    </button>
-                  ))}
                 </div>
                 <input
                   type="range"
@@ -1529,20 +1510,19 @@ function App() {
                   step="1"
                   value={goldGrams}
                   onChange={(e) => setGoldGrams(Number(e.target.value))}
-                  className="gold-range w-full"
+                  className="gold-range w-full cursor-pointer"
                 />
               </div>
 
-              {/* Current Loan Balance (Bank Due) Slider + Presets */}
+              {/* Current Loan Balance Card */}
               {calcMode !== "old_gold" && (
-                <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs mb-1.5 gap-2">
-                    <div>
-                      <label className="font-bold text-slate-300">Current Loan Balance (Bank Due)</label>
-                      <span className="text-[10px] text-slate-400 block">Type custom loan amount or choose below</span>
-                    </div>
-                    <div className="flex items-center gap-1 rounded-xl bg-[#0e0e11] px-2.5 py-1 border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shadow-inner transition shrink-0">
-                      <span className="text-xs sm:text-sm font-bold text-[var(--gold-primary)]">₹</span>
+                <div className="mt-2.5 rounded-xl bg-[#121218] border border-[rgba(212,175,55,0.2)] p-2.5 sm:p-3 space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <label className="text-xs font-bold text-slate-300">
+                      Bank Loan Balance (Due Amount)
+                    </label>
+                    <div className="flex items-center gap-1 bg-[#0a0a0e] px-2.5 py-1 rounded-lg border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shrink-0 transition">
+                      <span className="text-xs font-bold text-[var(--gold-primary)]">₹</span>
                       <input
                         type="number"
                         inputMode="numeric"
@@ -1554,30 +1534,9 @@ function App() {
                           setLoanAmount(isNaN(val) ? 0 : val);
                         }}
                         placeholder="0"
-                        className="w-24 sm:w-28 bg-transparent text-right text-xs sm:text-sm font-black text-white outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-24 bg-transparent text-right text-xs sm:text-sm font-extrabold text-white outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                     </div>
-                  </div>
-                  <div className="grid grid-cols-4 gap-1.5 mb-2.5">
-                    {[
-                      { label: "₹50K", val: 50000 },
-                      { label: "₹1.5L", val: 150000 },
-                      { label: "₹3L", val: 300000 },
-                      { label: "₹5L", val: 500000 },
-                    ].map((preset) => (
-                      <button
-                        key={preset.label}
-                        type="button"
-                        onClick={() => setLoanAmount(preset.val)}
-                        className={`py-1.5 rounded-lg text-[11px] font-semibold transition cursor-pointer ${
-                          loanAmount === preset.val
-                            ? "bg-[rgba(212,175,55,0.25)] text-[var(--gold-light)] border border-[rgba(212,175,55,0.4)]"
-                            : "bg-[#121218] text-slate-400 border border-[rgba(212,175,55,0.12)] hover:border-[rgba(212,175,55,0.2)]"
-                        }`}
-                      >
-                        {preset.label}
-                      </button>
-                    ))}
                   </div>
                   <input
                     type="range"
@@ -1586,33 +1545,33 @@ function App() {
                     step="5000"
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(Number(e.target.value))}
-                    className="gold-range w-full"
+                    className="gold-range w-full cursor-pointer"
                   />
                 </div>
               )}
 
-              {/* Live Real-time Valuation Output Box */}
-              <div className="mt-4 rounded-xl sm:rounded-2xl border border-[rgba(212,175,55,0.25)] bg-gradient-to-br from-[#121218] to-[#1a1a26] p-3.5 sm:p-4 space-y-2">
-                <div className="flex items-center justify-between text-xs sm:text-sm text-slate-300">
-                  <span>Est. Market Value ({goldGrams}g @ {goldPurity}):</span>
+              {/* Valuation Result Box */}
+              <div className="mt-3 rounded-xl border border-[rgba(212,175,55,0.25)] bg-gradient-to-br from-[#121218] to-[#1a1a26] p-3 sm:p-3.5 space-y-1.5">
+                <div className="flex items-center justify-between text-xs text-slate-300">
+                  <span>Sona Ki Market Value ({goldGrams}g @ {goldPurity}):</span>
                   <strong className="text-white font-bold">₹{totalMarketValue.toLocaleString("en-IN")}</strong>
                 </div>
 
                 {calcMode !== "old_gold" && (
-                  <div className="flex items-center justify-between text-xs sm:text-sm text-rose-400">
-                    <span>Loan Settled by MRAJ JEWELERS:</span>
+                  <div className="flex items-center justify-between text-xs text-rose-400">
+                    <span>Bank Loan Settlement:</span>
                     <strong className="font-bold">- ₹{loanAmount.toLocaleString("en-IN")}</strong>
                   </div>
                 )}
 
-                <div className="pt-2 border-t border-[rgba(212,175,55,0.18)]">
+                <div className="pt-2 border-t border-[rgba(212,175,55,0.2)]">
                   {calcMode === "cash" && (
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider text-[var(--gold-primary)]">
-                          EXTRA CASH IN YOUR HAND
+                        <p className="text-[11px] font-extrabold uppercase tracking-wide text-[var(--gold-primary)]">
+                          Aapko Extra Cash Milega
                         </p>
-                        <p className="text-[10px] text-slate-400">Spot Google Pay / Bank Transfer</p>
+                        <p className="text-[9.5px] text-slate-400">Turant Google Pay / Bank Transfer</p>
                       </div>
                       <p className="text-xl sm:text-2xl font-black text-[var(--gold-light)]">
                         ₹{netCashInHand.toLocaleString("en-IN")}
@@ -1623,15 +1582,15 @@ function App() {
                   {calcMode === "partial" && (
                     <div className="space-y-1">
                       <div className="flex items-center justify-between text-xs text-slate-300">
-                        <span>Gold Sold to Clear Loan:</span>
-                        <span className="font-bold text-amber-300">{gramsToSellForLoan}g</span>
+                        <span>Loan Ke Liye Bikega:</span>
+                        <span className="font-bold text-amber-300">{gramsToSellForLoan}g Sona</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider text-emerald-400">
-                            SONA JO SURAKSHIT GHAR JAYEGA
+                          <p className="text-[11px] font-extrabold uppercase tracking-wide text-emerald-400">
+                            Sona Jo Wapas Ghar Jayega
                           </p>
-                          <p className="text-[10px] text-slate-400">Pure baaki gehne aapke hawale</p>
+                          <p className="text-[9.5px] text-slate-400">Pure baaki gehne aapke hawale</p>
                         </div>
                         <p className="text-xl sm:text-2xl font-black text-emerald-400">
                           {gramsReturnedHome} grams
@@ -1643,10 +1602,10 @@ function App() {
                   {calcMode === "old_gold" && (
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-[10px] min-[360px]:text-[11px] font-bold uppercase tracking-wider text-[var(--gold-primary)]">
-                          SPOT CASH TO RECEIVE
+                        <p className="text-[11px] font-extrabold uppercase tracking-wide text-[var(--gold-primary)]">
+                          Spot Cash Payment
                         </p>
-                        <p className="text-[10px] text-slate-400">0% Melting Loss • Computerized Purity</p>
+                        <p className="text-[9.5px] text-slate-400">0% Deduction • Instant Payout</p>
                       </div>
                       <p className="text-xl sm:text-2xl font-black text-[var(--gold-light)]">
                         ₹{totalMarketValue.toLocaleString("en-IN")}
@@ -1657,27 +1616,27 @@ function App() {
               </div>
 
               {/* Action Buttons Footer */}
-              <div className="mt-4 flex flex-col sm:flex-row gap-2 sm:gap-2.5">
+              <div className="mt-3 grid grid-cols-2 gap-2">
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-whatsapp flex-1 flex items-center justify-center gap-2 py-3 text-xs min-[360px]:text-sm font-bold"
+                  className="btn-whatsapp flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-bold rounded-xl"
                 >
-                  <MessageCircle size={17} />
+                  <MessageCircle size={16} />
                   <span>WhatsApp Slip</span>
                 </a>
                 <button
                   type="button"
                   onClick={() => openForm(calcMode === "old_gold" ? "sell_old_gold" : "calculator_modal")}
-                  className="btn-gold flex-1 flex items-center justify-center gap-2 py-3 text-xs min-[360px]:text-sm font-bold shadow-gold cursor-pointer"
+                  className="btn-gold flex items-center justify-center gap-1.5 py-2.5 text-xs sm:text-sm font-bold shadow-gold rounded-xl cursor-pointer"
                 >
-                  <span>{calcMode === "old_gold" ? "Sell Gold at This Rate" : "Release Sona Now"}</span>
-                  <ArrowRight size={16} />
+                  <span>{calcMode === "old_gold" ? "Sell Sona" : "Release Sona"}</span>
+                  <ArrowRight size={15} />
                 </button>
               </div>
 
-              <p className="mt-2.5 text-center text-[10px] text-slate-400">
+              <p className="mt-2 text-center text-[9.5px] text-slate-400">
                 ⚡ 100% Free calculation • ₹0 Advance Fee • Locker handover in front of you
               </p>
             </motion.div>

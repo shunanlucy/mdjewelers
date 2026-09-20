@@ -84,7 +84,7 @@ const citiesList = [
 const liveTickerFeed = [
   "Gold loan settlement & release assistance available across Kolkata, Bowbazar & Greater Bengal",
   "Muthoot, Manappuram & Bank gold loan clearances processed daily",
-  "Live IBJA 24K / 22K benchmark valuation with computerized testing",
+  "Live 24K / 22K Gold Market Rate valuation with computerized testing",
   "Partial release option available — retain required jewellery safely",
 ];
 
@@ -102,7 +102,7 @@ const faqs = [
   {
     question: "Kya bina loan ke physical gold ya coins sell kiye ja sakte hain?",
     answer:
-      "Haan, ghar par rakha purana sona, coins ya chandi live IBJA rate par direct sell kiye ja sakte hain. Computerized testing ke baad turant payment transfer hoti hai.",
+      "Haan, ghar par rakha purana sona, coins ya chandi live gold market rate par direct sell kiye ja sakte hain. Computerized testing ke baad turant payment transfer hoti hai.",
   },
   {
     question: "Bank ya NBFC se notice aane par kya settlement sambhav hai?",
@@ -159,12 +159,12 @@ const highlightedServices = [
   {
     id: "sell-old-gold",
     title: "Sell Old Gold & Silver",
-    hindi: "Live IBJA Market Rate",
-    pill: "💎 Live IBJA Rate",
+    hindi: "Live Gold Market Rate",
+    pill: "💎 Live Gold Rate",
     pillColor: "bg-[#251e0e]/90 text-[var(--gold-light)] border-[rgba(212,175,55,0.4)]",
     image: serviceVintageGold,
     icon: Sparkles,
-    desc: "Ghar par rakha purana sona aur chandi live IBJA rate par bechein. Computerized testing aur transparent payout.",
+    desc: "Ghar par rakha purana sona aur chandi aaj ke live gold market rate par bechein. Computerized testing aur transparent payout.",
     bullets: [
       "Computerized purity testing",
       "Direct bank/UPI transfer",
@@ -410,41 +410,42 @@ function App() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      {/* Top Luxury Announcement & Live Rate Strip */}
-      <div className="relative z-50 bg-[#0a0a0e] border-b border-[rgba(212,175,55,0.2)] text-[#f8f8f8] text-[10px] min-[360px]:text-[11px] sm:text-xs py-2 px-2.5 sm:px-6 shadow-sm">
-        <div className="mx-auto max-w-[1440px] flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto py-0.5 no-scrollbar whitespace-nowrap w-full sm:w-auto">
-            <span className="flex items-center gap-1.5 font-bold text-[var(--gold-light)] shrink-0">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              LIVE 24K: <strong className="text-[var(--gold-primary)] font-extrabold">₹7,850/g</strong>
-            </span>
-            <span className="text-[rgba(212,175,55,0.3)] shrink-0">•</span>
-            <span className="text-slate-300 font-medium shrink-0">
-              22K: <strong className="text-[var(--gold-light)]">₹7,210/g</strong>
-            </span>
-            <span className="text-[rgba(212,175,55,0.3)] shrink-0">•</span>
-            <span className="text-slate-300 font-medium shrink-0">
-              20K: <strong className="text-[var(--gold-light)]">₹6,550/g</strong>
-            </span>
-            <span className="text-[rgba(212,175,55,0.3)] shrink-0">•</span>
-            <span className="text-slate-300 font-medium shrink-0">
-              Silver: <strong className="text-amber-200">₹94/g</strong>
-            </span>
-            <span className="hidden md:inline text-[rgba(212,175,55,0.3)] shrink-0">•</span>
-            <span className="hidden md:flex items-center gap-1 text-[var(--gold-light)] font-semibold shrink-0">
-              <Sparkles size={13} className="text-[var(--gold-primary)]" /> 100% Live IBJA Valuations & 0% Melting Loss
-            </span>
-          </div>
-          <div className="hidden sm:flex items-center gap-4 text-slate-300">
-            <span className="flex items-center gap-1 text-[var(--gold-light)] font-medium">
-              <Zap size={12} className="text-[var(--gold-primary)]" /> ₹0 Advance Fee Policy
-            </span>
-            <a
-              href="tel:+919880011225"
-              className="font-bold text-white hover:text-[var(--gold-light)] transition flex items-center gap-1"
-            >
-              <Phone size={12} className="text-[var(--gold-primary)]" /> 1800 120 1225
-            </a>
+      {/* Top Luxury Announcement & Rates Strip - Smooth Relaxed Continuous Scroll ("aram se") */}
+      <div className="relative z-50 bg-[#0a0a0e] border-b border-[rgba(212,175,55,0.2)] text-[#f8f8f8] text-[10px] min-[360px]:text-[11px] sm:text-xs py-1.5 px-2 overflow-hidden shadow-sm">
+        <div className="flex items-center">
+          <div className="animate-marquee-slow flex items-center gap-4 sm:gap-6 whitespace-nowrap">
+            {[1, 2].map((loop) => (
+              <div key={loop} className="flex items-center gap-3 sm:gap-5 shrink-0">
+                <span className="font-bold text-[var(--gold-light)]">
+                  24K Gold: <strong className="text-[var(--gold-primary)] font-extrabold">₹7,850/g</strong>
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="text-slate-300 font-medium">
+                  22K Gold: <strong className="text-[var(--gold-light)]">₹7,210/g</strong>
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="text-slate-300 font-medium">
+                  20K Gold: <strong className="text-[var(--gold-light)]">₹6,550/g</strong>
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="text-slate-300 font-medium">
+                  Silver: <strong className="text-amber-200">₹94/g</strong>
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="flex items-center gap-1 text-[var(--gold-light)] font-semibold">
+                  <Sparkles size={12} className="text-[var(--gold-primary)]" /> 100% Market Valuation & 0% Melting Loss
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="flex items-center gap-1 text-slate-300 font-medium">
+                  <Zap size={11} className="text-[var(--gold-primary)]" /> ₹0 Advance Fee Policy
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)]">•</span>
+                <span className="flex items-center gap-1 text-[var(--gold-light)] font-bold">
+                  <Phone size={11} className="text-[var(--gold-primary)]" /> Toll-Free: 1800 120 1225
+                </span>
+                <span className="text-[rgba(212,175,55,0.3)] mr-2">•</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -748,21 +749,29 @@ function App() {
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
             className="w-full min-w-0 flex flex-col items-center text-center"
           >
-            {/* Rotating Social Proof Pill */}
+            {/* Smooth Relaxed Continuous Announcement Ticker without 'Live' badge ("aram se scroll") */}
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-1.5 min-[360px]:gap-2 rounded-full bg-[#181824]/90 border border-[rgba(212,175,55,0.25)] px-2.5 py-1 min-[360px]:px-3 min-[360px]:py-1.5 shadow-md mb-4 min-[380px]:mb-5 backdrop-blur-md max-w-full overflow-hidden"
+              className="w-full max-w-xl mx-auto rounded-full bg-[#181824]/90 border border-[rgba(212,175,55,0.25)] py-1.5 px-3 shadow-md mb-4 min-[380px]:mb-5 backdrop-blur-md overflow-hidden flex items-center gap-2"
             >
-              <span className="flex items-center gap-1 text-[9px] min-[360px]:text-[10px] font-extrabold uppercase tracking-wider text-[var(--gold-light)] bg-[rgba(212,175,55,0.15)] px-1.5 py-0.5 min-[360px]:px-2 rounded-full border border-[rgba(212,175,55,0.3)] shrink-0">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_6px_#34d399]"></span>
-                </span>
-                Live
-              </span>
-              <span className="truncate min-w-0 text-[10.5px] min-[360px]:text-xs font-semibold text-slate-200">
-                {liveTickerFeed[tickerIndex]}
-              </span>
+              <div className="flex items-center gap-1.5 shrink-0 text-[var(--gold-primary)] font-bold text-[10px] min-[360px]:text-xs pr-2 border-r border-[rgba(212,175,55,0.25)]">
+                <Sparkles size={13} className="shrink-0 text-[var(--gold-primary)]" />
+                <span className="tracking-wider uppercase text-[9px] min-[360px]:text-[10px] text-[var(--gold-light)] font-bold">Notice</span>
+              </div>
+              <div className="overflow-hidden relative w-full flex items-center">
+                <div className="animate-marquee-ticker flex items-center gap-8 whitespace-nowrap">
+                  {[1, 2].map((loop) => (
+                    <div key={loop} className="flex items-center gap-8 shrink-0">
+                      {liveTickerFeed.map((item, idx) => (
+                        <span key={idx} className="flex items-center gap-2 text-[10.5px] min-[360px]:text-xs font-medium text-slate-200">
+                          <span>{item}</span>
+                          <span className="text-[rgba(212,175,55,0.4)]">•</span>
+                        </span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
 
             {/* Main Headline (Neutral, Professional, Straight-Cut) */}
@@ -785,7 +794,7 @@ function App() {
               <div className="mt-2.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs text-slate-400">
                 <span className="flex items-center gap-1.5">
                   <Check size={13} className="text-[var(--gold-primary)] shrink-0" />
-                  <span>Live IBJA benchmark valuation</span>
+                  <span>Live gold market benchmark valuation</span>
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Check size={13} className="text-[var(--gold-primary)] shrink-0" />
@@ -888,25 +897,25 @@ function App() {
               className="mt-5 sm:mt-7 rounded-xl sm:rounded-2xl border border-[rgba(212,175,55,0.18)] bg-[#181824]/90 p-2.5 min-[360px]:p-3 sm:p-4 shadow-xl backdrop-blur-md w-full max-w-xl min-w-0 mx-auto"
             >
               <div className="grid grid-cols-3 divide-x divide-[rgba(212,175,55,0.12)] text-center w-full min-w-0">
-                <div className="px-1 min-[360px]:px-2 sm:px-4 min-w-0">
-                  <p className="text-sm min-[360px]:text-base sm:text-2xl font-black tracking-tight gold-gradient-text truncate">
-                    ₹85 Cr+
+                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
+                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight gold-gradient-text whitespace-nowrap">
+                    ₹1,000 - 2,000 Cr+
                   </p>
                   <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
                     Loans Settled
                   </p>
                 </div>
-                <div className="px-1 min-[360px]:px-2 sm:px-4 min-w-0">
-                  <p className="text-sm min-[360px]:text-base sm:text-2xl font-black tracking-tight text-white truncate">
-                    18,500+
+                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
+                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight text-white whitespace-nowrap">
+                    1,000 - 2,500+
                   </p>
                   <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
-                    Families
+                    Families Helped
                   </p>
                 </div>
-                <div className="px-1 min-[360px]:px-2 sm:px-4 min-w-0">
-                  <p className="text-sm min-[360px]:text-base sm:text-2xl font-black tracking-tight text-[var(--gold-light)] flex items-center justify-center gap-0.5 sm:gap-1">
-                    4.9 <span className="text-[var(--gold-primary)] text-xs sm:text-sm">★</span>
+                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
+                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight text-[var(--gold-light)] flex items-center justify-center gap-0.5 sm:gap-1 whitespace-nowrap">
+                    4.9 <span className="text-[var(--gold-primary)] text-[10px] sm:text-sm">★</span>
                   </p>
                   <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
                     Rating
@@ -930,7 +939,7 @@ function App() {
               Gold Settlement & <span className="gold-gradient-text">Release Solutions</span>
             </h2>
             <p className="mt-1.5 text-xs sm:text-sm text-slate-400">
-              Transparent evaluation, branch loan settlement assistance aur live IBJA market rates.
+              Transparent evaluation, branch loan settlement assistance aur live gold market rates.
             </p>
           </Reveal>
 
@@ -995,7 +1004,7 @@ function App() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#181824] via-black/20 to-transparent opacity-90" />
                 <span className="absolute top-2.5 right-2.5 rounded-full px-2.5 py-1 text-[9.5px] font-extrabold uppercase tracking-wider shadow-md backdrop-blur-md bg-[#251e0e]/90 text-[var(--gold-light)] border border-[rgba(212,175,55,0.4)]">
-                  💎 Live IBJA Rate
+                  💎 Live Gold Rate
                 </span>
                 <div className="absolute bottom-2.5 left-3 flex h-8 w-8 items-center justify-center rounded-lg bg-[#181824]/90 text-[var(--gold-primary)] border border-[rgba(212,175,55,0.3)] shadow-md">
                   <Sparkles size={16} />
@@ -1054,7 +1063,7 @@ function App() {
                 {/* Top Badges */}
                 <div className="absolute top-2 sm:top-3 left-2.5 sm:left-4 right-2.5 sm:right-4 flex items-center justify-between gap-1.5">
                   <span className="inline-flex items-center gap-1 rounded-full bg-[#0e0e11]/90 backdrop-blur-md px-2 sm:px-2.5 py-0.5 text-[9.5px] sm:text-xs font-bold text-[var(--gold-primary)] border border-[rgba(212,175,55,0.3)] shadow-sm">
-                    <Sparkles size={11} /> Live IBJA ₹7,210/g
+                    <Sparkles size={11} /> Live Rate: ₹7,210/g
                   </span>
                   <span className="rounded-full bg-emerald-950/90 text-emerald-400 border border-emerald-500/40 backdrop-blur-md px-2 py-0.5 text-[9.5px] sm:text-xs font-bold shadow-sm">
                     ⚡ ₹0 Advance Fee
@@ -1096,7 +1105,7 @@ function App() {
                     </div>
                     <div className="flex items-center gap-1.5 bg-[#121218] px-2 py-1.5 rounded-lg border border-[rgba(212,175,55,0.15)]">
                       <Check size={11} className="text-[var(--gold-primary)] shrink-0" />
-                      <span className="truncate">IBJA Live Rates</span>
+                      <span className="truncate">Live Gold Rates</span>
                     </div>
                   </div>
                 </div>
@@ -1345,7 +1354,7 @@ function App() {
           </div>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-slate-500 text-center sm:text-left">
-            <p>© 2025-2026 MRAJ JEWELERS. All rights reserved. GSTIN: 27AABCM8921P1Z5.</p>
+            <p>© 2025-2026 MRAJ JEWELERS. All rights reserved.</p>
             <p>100% legal branch clearance process. We do not provide unauthorized pawn loans.</p>
           </div>
         </div>
@@ -1368,7 +1377,7 @@ function App() {
       <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-[rgba(212,175,55,0.25)] bg-[#0e0e11]/95 backdrop-blur-md px-2 min-[360px]:px-3 pt-2 pb-[max(0.65rem,env(safe-area-inset-bottom))] shadow-2xl flex items-center gap-1.5 min-[360px]:gap-2">
         <a
           href="tel:+919880011225"
-          className="flex flex-col items-center justify-center rounded-xl bg-[#181824] px-2 min-[360px]:px-3 py-1.5 min-[360px]:py-2 text-slate-200 border border-[rgba(212,175,55,0.25)] min-w-[48px] min-[360px]:min-w-[58px] shrink-0 hover:border-[var(--gold-primary)] transition"
+          className="flex flex-col items-center justify-center rounded-xl bg-[#181824] px-2 min-[360px]:px-2.5 py-1.5 min-[360px]:py-2 text-slate-200 border border-[rgba(212,175,55,0.25)] min-w-[48px] min-[360px]:min-w-[52px] shrink-0 hover:border-[var(--gold-primary)] transition"
         >
           <Phone size={15} className="text-[var(--gold-primary)]" />
           <span className="text-[9px] min-[360px]:text-[10px] font-bold mt-0.5">Call</span>
@@ -1377,16 +1386,16 @@ function App() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-whatsapp flex-1 flex items-center justify-center gap-1 min-[360px]:gap-1.5 rounded-xl py-2 min-[360px]:py-2.5 px-1.5 text-[11px] min-[360px]:text-xs font-bold text-white whitespace-nowrap"
+          className="btn-whatsapp btn-mobile-sticky flex-1 flex items-center justify-center gap-1.5 rounded-xl text-[11px] min-[360px]:text-xs font-bold text-white whitespace-nowrap"
         >
           <MessageCircle size={15} className="shrink-0" />
-          <span className="truncate">WhatsApp Slip</span>
+          <span>WhatsApp</span>
         </a>
         <button
           onClick={() => openForm("sticky_mobile")}
-          className="btn-gold flex-1 flex items-center justify-center gap-1 rounded-xl py-2 min-[360px]:py-2.5 px-1.5 text-[11px] min-[360px]:text-xs font-bold cursor-pointer active:scale-[0.99] whitespace-nowrap"
+          className="btn-gold btn-mobile-sticky flex-1 flex items-center justify-center gap-1.5 rounded-xl text-[11px] min-[360px]:text-xs font-bold cursor-pointer active:scale-[0.99] whitespace-nowrap"
         >
-          <span className="truncate">Release Sona</span>
+          <span>Release Sona</span>
           <ArrowRight size={13} className="shrink-0" />
         </button>
       </div>
@@ -1438,7 +1447,7 @@ function App() {
                     </span>
                   </div>
                   <p className="text-[11px] min-[360px]:text-xs text-slate-400 mt-0.5">
-                    Live IBJA market rate par instant valuation & cash calculation
+                    Live gold market rate par instant valuation & cash calculation
                   </p>
                 </div>
               </div>
@@ -1973,7 +1982,7 @@ function App() {
                         JEWELERS
                       </span>
                       <span className="ml-auto rounded-full bg-[rgba(212,175,55,0.12)] border border-[rgba(212,175,55,0.3)] px-2 py-0.5 text-[9.5px] font-bold text-[var(--gold-light)]">
-                        {quickServiceModal.category === "old_gold" ? "💎 Live IBJA Rates" : "🔒 Zero Advance Fee"}
+                        {quickServiceModal.category === "old_gold" ? "💎 Live Gold Rate" : "🔒 Zero Advance Fee"}
                       </span>
                     </div>
 
@@ -1984,7 +1993,7 @@ function App() {
                     </h3>
                     <p className="text-[11px] text-slate-400 mt-0.5">
                       {quickServiceModal.category === "old_gold"
-                        ? "Instant live IBJA valuation aur direct bank/cash payout"
+                        ? "Instant live gold valuation aur direct bank/cash payout"
                         : "Branch counter loan settlement aur direct locker release"}
                     </p>
                   </div>

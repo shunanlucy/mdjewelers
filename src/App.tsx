@@ -749,30 +749,6 @@ function App() {
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
             className="w-full min-w-0 flex flex-col items-center text-center"
           >
-            {/* Smooth Relaxed Continuous Announcement Ticker without 'Live' badge ("aram se scroll") */}
-            <motion.div
-              variants={fadeUp}
-              className="w-full max-w-xl mx-auto rounded-full bg-[#181824]/90 border border-[rgba(212,175,55,0.25)] py-1.5 px-3 shadow-md mb-4 min-[380px]:mb-5 backdrop-blur-md overflow-hidden flex items-center gap-2"
-            >
-              <div className="flex items-center gap-1.5 shrink-0 text-[var(--gold-primary)] font-bold text-[10px] min-[360px]:text-xs pr-2 border-r border-[rgba(212,175,55,0.25)]">
-                <Sparkles size={13} className="shrink-0 text-[var(--gold-primary)]" />
-                <span className="tracking-wider uppercase text-[9px] min-[360px]:text-[10px] text-[var(--gold-light)] font-bold">Notice</span>
-              </div>
-              <div className="overflow-hidden relative w-full flex items-center">
-                <div className="animate-marquee-ticker flex items-center gap-8 whitespace-nowrap">
-                  {[1, 2].map((loop) => (
-                    <div key={loop} className="flex items-center gap-8 shrink-0">
-                      {liveTickerFeed.map((item, idx) => (
-                        <span key={idx} className="flex items-center gap-2 text-[10.5px] min-[360px]:text-xs font-medium text-slate-200">
-                          <span>{item}</span>
-                          <span className="text-[rgba(212,175,55,0.4)]">•</span>
-                        </span>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
 
             {/* Main Headline (Neutral, Professional, Straight-Cut) */}
             <motion.h1

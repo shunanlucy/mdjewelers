@@ -12,6 +12,11 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   base: "./",
   plugins: [react(), tailwindcss(), viteSingleFile()],
+  server: {
+    watch: {
+      ignored: ["**/*.mp4"],
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

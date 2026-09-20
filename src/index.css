@@ -1,14 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", "DM Sans", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  /* Rich OSonare Gold & Deep Luxury System */
+  --bg-primary: #0e0e11;
+  --bg-secondary: #14141c;
+  --bg-tertiary: #181824;
+  --bg-card: #181824;
+  --bg-card-hover: #1e1e2d;
+  --surface-glass: rgba(20, 20, 28, 0.88);
+  --surface-glass-border: rgba(212, 175, 55, 0.18);
+
+  --gold-primary: #d4af37;
+  --gold-light: #fef08a;
+  --gold-dark: #b8860b;
+  --gold-gradient: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #aa8010 100%);
+  --gold-gradient-hover: linear-gradient(135deg, #ffe033 0%, #dfb83c 50%, #bb8d15 100%);
+  --gold-glow: rgba(212, 175, 55, 0.25);
+
+  --text-primary: #f8f8f8;
+  --text-secondary: #a6a6b8;
+  --text-muted: #7b7b8d;
+  --text-gold: #fef08a;
+
+  --border-subtle: rgba(212, 175, 55, 0.12);
+  --border-gold: rgba(212, 175, 55, 0.25);
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+  background-color: #0e0e11;
+  color: #f8f8f8;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -16,11 +45,35 @@ body {
   margin: 0;
   width: 100%;
   overflow-x: hidden;
-  font-family: "Plus Jakarta Sans", "DM Sans", Arial, sans-serif;
-  background: #f8f7fc;
-  color: #0f172a;
+  font-family: var(--font-sans);
+  background-color: #0e0e11;
+  color: #f8f8f8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Selection & Scrollbars */
+::selection {
+  background: rgba(212, 175, 55, 0.35);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262633;
+  border-radius: 9999px;
+  border: 2px solid #0e0e11;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
 }
 
 button, a, input, select {
@@ -28,184 +81,293 @@ button, a, input, select {
 }
 
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
-  outline: 2px solid #5f259f;
+  outline: 2px solid var(--gold-primary);
   outline-offset: 2px;
 }
 
-/* PhonePe & Google Pay Button Tokens */
-.btn-phonepe {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  border-radius: 0.85rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  min-height: 44px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #5f259f 0%, #4e1d87 100%);
-  color: #ffffff;
-  padding: 0.85rem 1.45rem;
-  box-shadow: 0 8px 20px -4px rgba(95, 37, 159, 0.35);
-  transition: all 200ms ease;
+/* Typography Helpers */
+.font-serif {
+  font-family: var(--font-serif);
 }
 
-.btn-phonepe:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
-  box-shadow: 0 12px 24px -5px rgba(95, 37, 159, 0.45);
+.font-sans {
+  font-family: var(--font-sans);
 }
 
+.gold-gradient-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+/* Luxury Gold Box Buttons ("feels like gold boxes") */
 .btn-gold {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  border-radius: 0.85rem;
+  border-radius: 13px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.25px;
+  min-height: 44px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffeaa7 0%, #f6cb42 22%, #d4af37 60%, #a87f08 100%);
+  color: #120e03;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid rgba(255, 238, 150, 0.75);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 2px 0 rgba(140, 95, 0, 0.45),
+    0 4px 14px -1px rgba(212, 175, 55, 0.48),
+    0 2px 4px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 12px 12px 0 0;
+  pointer-events: none;
+}
+
+.btn-gold:hover {
+  transform: translateY(-1.5px);
+  background: linear-gradient(180deg, #fff3c4 0%, #fae05e 22%, #e2be44 60%, #be9410 100%);
+  border-color: rgba(255, 250, 190, 0.95);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px 0 rgba(140, 95, 0, 0.35),
+    0 8px 24px -2px rgba(212, 175, 55, 0.65),
+    0 3px 6px rgba(0, 0, 0, 0.4);
+  color: #0c0901;
+}
+
+.btn-gold:active {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 0 2px 3px 0 rgba(110, 75, 0, 0.5),
+    0 2px 6px rgba(212, 175, 55, 0.35);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 13px;
   font-size: 0.875rem;
   font-weight: 700;
   min-height: 44px;
   cursor: pointer;
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.16) 0%, rgba(212, 175, 55, 0.06) 100%);
+  color: var(--gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 0.75rem 1.35rem;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 238, 150, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline-gold:hover {
+  border-color: var(--gold-primary);
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.26) 0%, rgba(212, 175, 55, 0.12) 100%);
   color: #ffffff;
-  padding: 0.85rem 1.45rem;
-  box-shadow: 0 8px 20px -4px rgba(217, 119, 6, 0.35);
-  transition: all 200ms ease;
+  transform: translateY(-1.5px);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
+    0 6px 20px -2px rgba(212, 175, 55, 0.45);
 }
 
-.btn-gold:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-  box-shadow: 0 12px 24px -5px rgba(217, 119, 6, 0.45);
-}
-
+/* WhatsApp Box Button (Matches the exact rounded box shape from user screenshot) */
 .btn-whatsapp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  border-radius: 0.85rem;
+  border-radius: 13px;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.2px;
   min-height: 44px;
   cursor: pointer;
-  background: #25d366;
+  background: linear-gradient(180deg, #3ae985 0%, #25d366 48%, #1ba34e 100%);
   color: #ffffff;
-  padding: 0.85rem 1.4rem;
-  box-shadow: 0 6px 18px -4px rgba(37, 211, 102, 0.4);
-  transition: all 200ms ease;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1.5px 2px 0 rgba(0, 75, 22, 0.35),
+    0 4px 14px -1px rgba(37, 211, 102, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-whatsapp::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 12px 12px 0 0;
+  pointer-events: none;
 }
 
 .btn-whatsapp:hover {
-  transform: translateY(-2px);
-  background: #20ba5a;
-  box-shadow: 0 10px 22px -5px rgba(37, 211, 102, 0.5);
+  transform: translateY(-1.5px);
+  background: linear-gradient(180deg, #51f296 0%, #2be070 48%, #1eb556 100%);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1.5px 2px 0 rgba(0, 75, 22, 0.25),
+    0 8px 24px -2px rgba(37, 211, 102, 0.65),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
 }
 
-.btn-outline-fintech {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  border-radius: 0.85rem;
-  font-size: 0.875rem;
-  font-weight: 700;
-  min-height: 44px;
-  cursor: pointer;
-  background: #ffffff;
-  color: #475569;
-  border: 1.5px solid #e2e8f0;
-  padding: 0.85rem 1.35rem;
-  transition: all 150ms ease;
+.btn-whatsapp:active {
+  transform: translateY(1px);
+  box-shadow: 
+    inset 0 2px 3px 0 rgba(0, 60, 20, 0.4),
+    0 2px 6px rgba(37, 211, 102, 0.35);
 }
 
-.btn-outline-fintech:hover {
-  border-color: #5f259f;
-  color: #5f259f;
-  background: #faf8ff;
-  transform: translateY(-1px);
+.shadow-gold {
+  box-shadow: 
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 2px 0 rgba(140, 95, 0, 0.45),
+    0 4px 14px -1px rgba(212, 175, 55, 0.48),
+    0 2px 4px rgba(0, 0, 0, 0.45);
 }
 
 /* Card Surface Tokens */
-.card-fintech {
-  background: #ffffff;
-  border: 1px solid #ede9fe;
-  box-shadow: 0 4px 20px -4px rgba(95, 37, 159, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+.card-luxury {
+  background: #181820;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
   border-radius: 1.25rem;
 }
 
-.card-fintech-elevated {
-  background: #ffffff;
-  border: 1px solid #e0d7f5;
-  box-shadow: 0 16px 40px -8px rgba(95, 37, 159, 0.1), 0 2px 8px -2px rgba(0, 0, 0, 0.03);
+.card-luxury-elevated {
+  background: linear-gradient(180deg, #1d1d26 0%, #15151c 100%);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.12);
   border-radius: 1.5rem;
 }
 
-/* Form inputs (PhonePe style) */
+.card-glass {
+  background: rgba(22, 22, 28, 0.82);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 1.25rem;
+}
+
+/* Form inputs (Luxury Dark) - NO WHITE BORDERS */
 .form-input {
   display: block;
   width: 100%;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid rgba(212, 175, 55, 0.22);
   border-radius: 0.75rem;
-  background: #ffffff;
-  color: #0f172a;
+  background: #181824;
+  color: #f8f8f8;
   padding: 0.75rem 0.95rem;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 150ms ease;
+  transition: all 180ms ease;
 }
 
 .form-input::placeholder {
-  color: #94a3b8;
+  color: #7b7b8d;
 }
 
 .form-input:focus {
-  border-color: #1a73e8;
-  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+  border-color: var(--gold-primary);
+  background: #1e1e2c;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
   outline: none;
 }
 
-/* Range Slider (Fintech Blue track + Blue Thumb) */
+/* Gold Range Slider */
 .gold-range {
   appearance: none;
-  height: 7px;
+  height: 6px;
   cursor: pointer;
   border-radius: 999px;
-  background: #e8f0fe;
+  background: #252533;
 }
 
 .gold-range::-webkit-slider-thumb {
   appearance: none;
   height: 22px;
   width: 22px;
-  border: 3px solid #ffffff;
+  border: 2px solid #0e0e11;
   border-radius: 999px;
-  background: #1a73e8;
-  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.45);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.75);
   transition: transform 150ms ease;
 }
 
 .gold-range::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
+  transform: scale(1.18);
 }
 
 .gold-range::-moz-range-thumb {
   height: 20px;
   width: 20px;
-  border: 3px solid #ffffff;
+  border: 2px solid #0e0e11;
   border-radius: 999px;
-  background: #1a73e8;
-  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.45);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.75);
 }
 
 /* Animation utilities */
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+@keyframes pulse-gold {
+  0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.3)); }
+  50% { opacity: 0.85; transform: scale(1.03); filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7)); }
 }
 
-.animate-pulse-soft {
-  animation: pulse-soft 2.5s infinite ease-in-out;
+.animate-pulse-gold {
+  animation: pulse-gold 2.5s infinite ease-in-out;
+}
+
+@keyframes shimmer-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+  animation: shimmer-slide 2.8s infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

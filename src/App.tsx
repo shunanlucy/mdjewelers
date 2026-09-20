@@ -257,7 +257,7 @@ function App() {
         quickLeadForm.phone
       }\n• Location: ${quickLeadForm.location}\nPlease share valuation & branch settlement guidance.`
     );
-    window.open(`https://wa.me/919880011225?text=${msg}`, "_blank");
+    window.open(`https://wa.me/918101121813?text=${msg}`, "_blank");
   };
 
   // Calculator State: 'cash' = Full Loan Settlement, 'partial' = Partial Release (Save Gold), 'old_gold' = Sell Physical Old Gold (No Loan)
@@ -394,7 +394,7 @@ function App() {
   const gramsToSellForLoan = Math.min(goldGrams, Math.ceil(loanAmount / ratePerGram));
   const gramsReturnedHome = Math.max(0, goldGrams - gramsToSellForLoan);
 
-  const whatsappUrl = `https://wa.me/919880011225?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/918101121813?text=${encodeURIComponent(
     calcMode === "old_gold"
       ? `Hello MRAJ JEWELERS, I want to sell physical old gold (${goldGrams}g, ${goldPurity}, ${oldGoldItemType}) in ${selectedCity}. Please share live valuation & nearest branch address.`
       : `Hello MRAJ JEWELERS, I want to inquire about gold loan release from ${selectedLender} in ${selectedCity}. Approx Gold: ${goldGrams}g, Loan: ₹${loanAmount.toLocaleString(
@@ -537,12 +537,12 @@ function App() {
           {/* Desktop CTAs (Streamlined & Clean with Luxury Gold) */}
           <div className="relative z-10 hidden items-center gap-2.5 lg:flex shrink-0">
             <a
-              href="tel:+919880011225"
+              href="tel:+918101121813"
               className="hidden xl:flex items-center gap-1.5 rounded-xl border border-[rgba(212,175,55,0.3)] bg-white/5 px-3.5 py-1.5 text-xs font-bold text-[var(--gold-light)] hover:border-[var(--gold-primary)] hover:bg-[rgba(212,175,55,0.12)] transition duration-150"
-              title="Call Toll-Free: 1800 120 1225"
+              title="Call: +91 81011 21813"
             >
               <Phone size={13} className="text-[var(--gold-primary)]" />
-              <span>1800 120 1225</span>
+              <span>+91 81011 21813</span>
             </a>
             <a
               href={whatsappUrl}
@@ -565,7 +565,7 @@ function App() {
           {/* Mobile Quick Action Buttons */}
           <div className="flex items-center gap-1.5 lg:hidden shrink-0">
             <a
-              href="tel:+919880011225"
+              href="tel:+918101121813"
               className="flex h-7.5 w-7.5 items-center justify-center rounded-lg bg-[#181824] text-[var(--gold-light)] border border-[rgba(212,175,55,0.25)] hover:bg-[rgba(212,175,55,0.15)] transition shrink-0"
               aria-label="Call MRAJ JEWELERS"
             >
@@ -1276,8 +1276,8 @@ function App() {
               </div>
               <div>
                 <strong className="text-white block font-serif">Helpline & WhatsApp:</strong>
-                <span className="text-amber-300 text-[11px] block">Toll Free: 1800 120 1225</span>
-                <span className="text-emerald-400 text-[11px]">WhatsApp: +91 98800 11225</span>
+                <span className="text-amber-300 text-[11px] block">Call: +91 81011 21813</span>
+                <span className="text-emerald-400 text-[11px]">WhatsApp: +91 81011 21813</span>
               </div>
             </div>
           </div>
@@ -1305,7 +1305,7 @@ function App() {
       {/* Mobile Sticky Quick Action Bar (Ultra-responsive on 320px-360px Android devices) */}
       <div className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-[rgba(212,175,55,0.25)] bg-[#0e0e11]/95 backdrop-blur-md px-2 min-[360px]:px-3 pt-2 pb-[max(0.65rem,env(safe-area-inset-bottom))] shadow-2xl flex items-center gap-1.5 min-[360px]:gap-2">
         <a
-          href="tel:+919880011225"
+          href="tel:+918101121813"
           className="flex flex-col items-center justify-center rounded-xl bg-[#181824] px-2 min-[360px]:px-2.5 py-1.5 min-[360px]:py-2 text-slate-200 border border-[rgba(212,175,55,0.25)] min-w-[48px] min-[360px]:min-w-[52px] shrink-0 hover:border-[var(--gold-primary)] transition"
         >
           <Phone size={15} className="text-[var(--gold-primary)]" />

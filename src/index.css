@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-cinzel: "Cinzel", "Cormorant Garamond", serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
@@ -102,6 +103,18 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .gold-glow {
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+/* Luxury Gold & Jewelry House Typography */
+.brand-jewelers-text {
+  font-family: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-block;
+  vertical-align: middle;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
 /* Luxury Gold Box Buttons ("feels like gold boxes") */

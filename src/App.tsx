@@ -82,7 +82,7 @@ const citiesList = [
 ];
 
 const liveTickerFeed = [
-  "Gold loan settlement & release assistance available across Mumbai, Pune & Delhi",
+  "Gold loan settlement & release assistance available across Kolkata, Bowbazar & Greater Bengal",
   "Muthoot, Manappuram & Bank gold loan clearances processed daily",
   "Live IBJA 24K / 22K benchmark valuation with computerized testing",
   "Partial release option available — retain required jewellery safely",
@@ -175,16 +175,19 @@ const highlightedServices = [
 ];
 
 const LOCATION_OPTIONS = [
-  "Zaveri Bazaar, Mumbai",
-  "Andheri / Western Suburbs, Mumbai",
-  "Bandra / Dadar / Central Mumbai",
-  "Borivali / Kandivali / Dahisar",
-  "Thane / Kalyan / Dombivli",
-  "Navi Mumbai (Vashi / Nerul / Panvel)",
-  "Mira Road / Bhayandar",
-  "Pune / PCMC (Maharashtra)",
-  "Nashik / North Maharashtra",
-  "Other City / All India Service",
+  "Bowbazar (B.B. Ganguly St / Central Gold Hub)",
+  "Burrabazar / Posta (Bullion Market)",
+  "Gariahat / Ballygunge (South Kolkata)",
+  "Park Street / Camac Street / Central Kolkata",
+  "Salt Lake (Bidhannagar / Sector V)",
+  "New Town / Rajarhat",
+  "Howrah (Shibpur / Golabari / Salkia)",
+  "Behala / Taratala / New Alipore",
+  "Dum Dum / Nagerbazar / VIP Road",
+  "Shyambazar / Hatibagan (North Kolkata)",
+  "Jadavpur / Tollygunge / Garia",
+  "Barasat / Madhyamgram (North 24 Pgs)",
+  "Other Kolkata / Greater Kolkata Area",
 ];
 
 const OLD_GOLD_QUERIES = [
@@ -212,7 +215,7 @@ function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [tickerIndex, setTickerIndex] = useState(0);
-  const [selectedCity, setSelectedCity] = useState("Mumbai");
+  const [selectedCity, setSelectedCity] = useState("Kolkata");
 
   // Dedicated Quick Inquiry Modal for the 2 Action Cards ('Check Old Value' & 'Gold Loan Settlement')
   const [quickServiceModal, setQuickServiceModal] = useState<{
@@ -226,7 +229,7 @@ function App() {
   const [quickLeadForm, setQuickLeadForm] = useState({
     name: "",
     phone: "",
-    location: "Zaveri Bazaar, Mumbai",
+    location: "Bowbazar (B.B. Ganguly St / Central Gold Hub)",
     query: "Physical Old Gold / Jewellery Sale & Valuation",
   });
 
@@ -467,7 +470,7 @@ function App() {
               alt="MRAJ"
               className="h-3.5 min-[360px]:h-4 sm:h-5 lg:h-5.5 w-auto object-contain transition duration-300 group-hover:scale-105 shrink-0 drop-shadow-[0_1px_4px_rgba(212,175,55,0.25)]"
             />
-            <span className="font-sans font-bold text-[11px] min-[360px]:text-[12px] sm:text-[14px] lg:text-[15px] tracking-[0.14em] text-white uppercase leading-none whitespace-nowrap">
+            <span className="brand-jewelers-text text-[11px] min-[360px]:text-[12px] sm:text-[13.5px] lg:text-[14.5px] leading-none whitespace-nowrap pt-0.5">
               JEWELERS
             </span>
           </a>
@@ -1319,19 +1322,19 @@ function App() {
                 className="h-6 sm:h-7 w-auto object-contain drop-shadow-[0_2px_8px_rgba(212,175,55,0.25)]"
               />
               <div>
-                <p className="font-sans text-sm sm:text-base font-extrabold tracking-[0.14em] text-white">JEWELERS</p>
+                <p className="brand-jewelers-text text-sm sm:text-base leading-tight">JEWELERS</p>
                 <p className="text-[10px] text-[var(--gold-light)]">Gold Valuation & Loan Settlement Services</p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-4 sm:gap-6 text-xs text-slate-300">
               <div>
-                <strong className="text-white block font-serif">Mumbai Hub:</strong>
-                <span className="text-slate-400 text-[11px]">Zaveri Bazaar, Mumbai 400002</span>
+                <strong className="text-white block font-serif">Kolkata Central Hub:</strong>
+                <span className="text-slate-400 text-[11px]">Bowbazar / B.B. Ganguly St, Kolkata 700012</span>
               </div>
               <div>
-                <strong className="text-white block font-serif">Delhi Hub:</strong>
-                <span className="text-slate-400 text-[11px]">Karol Bagh, New Delhi 110005</span>
+                <strong className="text-white block font-serif">Kolkata South Hub:</strong>
+                <span className="text-slate-400 text-[11px]">Gariahat Road, Kolkata 700019</span>
               </div>
               <div>
                 <strong className="text-white block font-serif">Helpline & WhatsApp:</strong>
@@ -1780,10 +1783,13 @@ function App() {
                     <img
                       src={logoMrajWordmark}
                       alt="MRAJ"
-                      className="h-5 sm:h-5.5 w-auto object-contain"
+                      className="h-4 sm:h-4.5 w-auto object-contain"
                     />
-                    <div className="inline-flex items-center gap-1 rounded-full bg-[rgba(212,175,55,0.12)] border border-[rgba(212,175,55,0.25)] px-2.5 sm:px-3 py-0.5 text-[10px] min-[360px]:text-[11px] font-bold text-[var(--gold-primary)]">
-                      <Zap size={11} /> JEWELERS Free Quote
+                    <span className="brand-jewelers-text text-xs leading-none pt-0.5">
+                      JEWELERS
+                    </span>
+                    <div className="ml-auto inline-flex items-center gap-1 rounded-full bg-[rgba(212,175,55,0.12)] border border-[rgba(212,175,55,0.25)] px-2.5 sm:px-3 py-0.5 text-[10px] min-[360px]:text-[11px] font-bold text-[var(--gold-primary)]">
+                      <Zap size={11} /> 100% Free Quote
                     </div>
                   </div>
                   <h3 className="mt-1.5 font-serif text-xl sm:text-2xl font-bold text-white leading-tight">
@@ -1963,7 +1969,7 @@ function App() {
                         alt="MRAJ"
                         className="h-3.5 w-auto object-contain"
                       />
-                      <span className="font-sans font-bold text-xs tracking-[0.14em] text-white uppercase">
+                      <span className="brand-jewelers-text text-xs leading-none pt-0.5">
                         JEWELERS
                       </span>
                       <span className="ml-auto rounded-full bg-[rgba(212,175,55,0.12)] border border-[rgba(212,175,55,0.3)] px-2 py-0.5 text-[9.5px] font-bold text-[var(--gold-light)]">

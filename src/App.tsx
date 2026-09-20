@@ -410,45 +410,6 @@ function App() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      {/* Top Luxury Announcement & Rates Strip - Smooth Relaxed Continuous Scroll ("aram se") */}
-      <div className="relative z-50 bg-[#0a0a0e] border-b border-[rgba(212,175,55,0.2)] text-[#f8f8f8] text-[10px] min-[360px]:text-[11px] sm:text-xs py-1.5 px-2 overflow-hidden shadow-sm">
-        <div className="flex items-center">
-          <div className="animate-marquee-slow flex items-center gap-4 sm:gap-6 whitespace-nowrap">
-            {[1, 2].map((loop) => (
-              <div key={loop} className="flex items-center gap-3 sm:gap-5 shrink-0">
-                <span className="font-bold text-[var(--gold-light)]">
-                  24K Gold: <strong className="text-[var(--gold-primary)] font-extrabold">₹7,850/g</strong>
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="text-slate-300 font-medium">
-                  22K Gold: <strong className="text-[var(--gold-light)]">₹7,210/g</strong>
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="text-slate-300 font-medium">
-                  20K Gold: <strong className="text-[var(--gold-light)]">₹6,550/g</strong>
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="text-slate-300 font-medium">
-                  Silver: <strong className="text-amber-200">₹94/g</strong>
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="flex items-center gap-1 text-[var(--gold-light)] font-semibold">
-                  <Sparkles size={12} className="text-[var(--gold-primary)]" /> 100% Market Valuation & 0% Melting Loss
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="flex items-center gap-1 text-slate-300 font-medium">
-                  <Zap size={11} className="text-[var(--gold-primary)]" /> ₹0 Advance Fee Policy
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)]">•</span>
-                <span className="flex items-center gap-1 text-[var(--gold-light)] font-bold">
-                  <Phone size={11} className="text-[var(--gold-primary)]" /> Toll-Free: 1800 120 1225
-                </span>
-                <span className="text-[rgba(212,175,55,0.3)] mr-2">•</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Header */}
       <header
@@ -1521,13 +1482,29 @@ function App() {
 
               {/* Gold Weight Input & Slider + Presets */}
               <div className="mt-4">
-                <div className="flex items-center justify-between text-xs mb-1.5">
-                  <label className="font-bold text-slate-300">
-                    {calcMode === "old_gold" ? "Approx Gold Weight" : "Total Pledged Gold Weight"}
-                  </label>
-                  <span className="rounded-lg bg-[rgba(212,175,55,0.15)] px-2.5 py-0.5 text-xs font-extrabold text-[var(--gold-light)] border border-[rgba(212,175,55,0.3)]">
-                    {goldGrams} grams
-                  </span>
+                <div className="flex items-center justify-between text-xs mb-1.5 gap-2">
+                  <div>
+                    <label className="font-bold text-slate-300">
+                      {calcMode === "old_gold" ? "Approx Gold Weight" : "Total Pledged Gold Weight"}
+                    </label>
+                    <span className="text-[10px] text-slate-400 block">Type custom grams or choose below</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 rounded-xl bg-[#0e0e11] px-2.5 py-1 border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shadow-inner transition shrink-0">
+                    <input
+                      type="number"
+                      inputMode="decimal"
+                      min="0.1"
+                      step="any"
+                      value={goldGrams === 0 ? "" : goldGrams}
+                      onChange={(e) => {
+                        const val = e.target.value === "" ? 0 : parseFloat(e.target.value);
+                        setGoldGrams(isNaN(val) ? 0 : val);
+                      }}
+                      placeholder="0"
+                      className="w-16 sm:w-20 bg-transparent text-right text-xs sm:text-sm font-black text-[var(--gold-light)] outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    />
+                    <span className="text-[11px] sm:text-xs font-bold text-slate-300">grams</span>
+                  </div>
                 </div>
                 <div className="grid grid-cols-4 gap-1.5 mb-2.5">
                   {[15, 45, 100, 200].map((preset) => (
@@ -1548,7 +1525,7 @@ function App() {
                 <input
                   type="range"
                   min="5"
-                  max="500"
+                  max={Math.max(500, Math.ceil(goldGrams))}
                   step="1"
                   value={goldGrams}
                   onChange={(e) => setGoldGrams(Number(e.target.value))}
@@ -1559,11 +1536,27 @@ function App() {
               {/* Current Loan Balance (Bank Due) Slider + Presets */}
               {calcMode !== "old_gold" && (
                 <div className="mt-4">
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <label className="font-bold text-slate-300">Current Loan Balance (Bank Due)</label>
-                    <span className="rounded-lg bg-[#121218] px-2.5 py-0.5 text-xs font-extrabold text-white border border-[rgba(212,175,55,0.2)]">
-                      ₹{loanAmount.toLocaleString("en-IN")}
-                    </span>
+                  <div className="flex items-center justify-between text-xs mb-1.5 gap-2">
+                    <div>
+                      <label className="font-bold text-slate-300">Current Loan Balance (Bank Due)</label>
+                      <span className="text-[10px] text-slate-400 block">Type custom loan amount or choose below</span>
+                    </div>
+                    <div className="flex items-center gap-1 rounded-xl bg-[#0e0e11] px-2.5 py-1 border border-[rgba(212,175,55,0.4)] focus-within:border-[var(--gold-light)] focus-within:ring-1 focus-within:ring-[var(--gold-light)] shadow-inner transition shrink-0">
+                      <span className="text-xs sm:text-sm font-bold text-[var(--gold-primary)]">₹</span>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        min="0"
+                        step="1000"
+                        value={loanAmount === 0 ? "" : loanAmount}
+                        onChange={(e) => {
+                          const val = e.target.value === "" ? 0 : parseFloat(e.target.value);
+                          setLoanAmount(isNaN(val) ? 0 : val);
+                        }}
+                        placeholder="0"
+                        className="w-24 sm:w-28 bg-transparent text-right text-xs sm:text-sm font-black text-white outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                      />
+                    </div>
                   </div>
                   <div className="grid grid-cols-4 gap-1.5 mb-2.5">
                     {[
@@ -1589,8 +1582,8 @@ function App() {
                   <input
                     type="range"
                     min="10000"
-                    max="2500000"
-                    step="10000"
+                    max={Math.max(2500000, Math.ceil(loanAmount))}
+                    step="5000"
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(Number(e.target.value))}
                     className="gold-range w-full"

@@ -894,30 +894,30 @@ function App() {
             {/* Professional Frosted Metric Card */}
             <motion.div
               variants={fadeUp}
-              className="mt-5 sm:mt-7 rounded-xl sm:rounded-2xl border border-[rgba(212,175,55,0.18)] bg-[#181824]/90 p-2.5 min-[360px]:p-3 sm:p-4 shadow-xl backdrop-blur-md w-full max-w-xl min-w-0 mx-auto"
+              className="mt-5 sm:mt-7 rounded-xl sm:rounded-2xl border border-[rgba(212,175,55,0.18)] bg-[#181824]/90 p-2 min-[360px]:px-2.5 min-[360px]:py-2.5 sm:p-4 shadow-xl backdrop-blur-md w-full max-w-xl min-w-0 mx-auto"
             >
-              <div className="grid grid-cols-3 divide-x divide-[rgba(212,175,55,0.12)] text-center w-full min-w-0">
-                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
-                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight gold-gradient-text whitespace-nowrap">
+              <div className="grid grid-cols-[1.4fr_1.2fr_0.75fr] sm:grid-cols-3 divide-x divide-[rgba(212,175,55,0.14)] text-center w-full min-w-0 items-center">
+                <div className="px-0.5 min-[360px]:px-1 sm:px-4 min-w-0 flex flex-col items-center justify-center">
+                  <p className="text-[10px] min-[340px]:text-[11px] min-[380px]:text-xs sm:text-lg md:text-2xl font-black tracking-tight gold-gradient-text whitespace-nowrap">
                     ₹1,000 - 2,000 Cr+
                   </p>
-                  <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
+                  <p className="text-[8px] min-[360px]:text-[9.5px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
                     Loans Settled
                   </p>
                 </div>
-                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
-                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight text-white whitespace-nowrap">
+                <div className="px-0.5 min-[360px]:px-1 sm:px-4 min-w-0 flex flex-col items-center justify-center">
+                  <p className="text-[10px] min-[340px]:text-[11px] min-[380px]:text-xs sm:text-lg md:text-2xl font-black tracking-tight text-white whitespace-nowrap">
                     1,000 - 2,500+
                   </p>
-                  <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
+                  <p className="text-[8px] min-[360px]:text-[9.5px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
                     Families Helped
                   </p>
                 </div>
-                <div className="px-1 min-[360px]:px-1.5 sm:px-4 min-w-0">
-                  <p className="text-[11px] min-[360px]:text-xs sm:text-xl md:text-2xl font-black tracking-tight text-[var(--gold-light)] flex items-center justify-center gap-0.5 sm:gap-1 whitespace-nowrap">
+                <div className="px-0.5 min-[360px]:px-1 sm:px-4 min-w-0 flex flex-col items-center justify-center">
+                  <p className="text-[10px] min-[340px]:text-[11px] min-[380px]:text-xs sm:text-lg md:text-2xl font-black tracking-tight text-[var(--gold-light)] flex items-center justify-center gap-0.5 sm:gap-1 whitespace-nowrap">
                     4.9 <span className="text-[var(--gold-primary)] text-[10px] sm:text-sm">★</span>
                   </p>
-                  <p className="text-[8.5px] min-[360px]:text-[10px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
+                  <p className="text-[8px] min-[360px]:text-[9.5px] sm:text-[11px] font-medium text-slate-400 mt-0.5 leading-tight">
                     Rating
                   </p>
                 </div>

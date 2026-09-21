@@ -13,6 +13,7 @@ export default defineConfig({
   base: "./",
   plugins: [react(), tailwindcss(), viteSingleFile()],
   server: {
+    host: true,
     watch: {
       ignored: ["**/*.mp4"],
     },

@@ -81,6 +81,23 @@ body {
   animation: marqueeSlow 42s linear infinite;
 }
 
+@keyframes reviewMarqueeAnim {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-review-marquee {
+  display: flex;
+  width: max-content;
+  animation: reviewMarqueeAnim 68s linear infinite;
+  will-change: transform;
+}
+
+.animate-review-marquee:hover,
+.animate-review-marquee.paused {
+  animation-play-state: paused;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -125,6 +142,30 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .gold-glow {
   box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+/* Solid Gold Highlight for Active Tabs & Selectors */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #ffd700 0%, #e6be44 48%, #d4af37 100%) !important;
+}
+
+.admin-tab-active {
+  background: linear-gradient(135deg, #ffd700 0%, #f5cb4a 45%, #d4af37 100%) !important;
+  color: #0d0903 !important;
+  border: 1px solid #fff2a3 !important;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+.admin-tab-inactive {
+  background: #191926;
+  color: #e2e8f0;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.admin-tab-inactive:hover {
+  border-color: var(--gold-primary);
+  color: #ffffff;
+  background: #222234;
 }
 
 /* Luxury Gold & Jewelry House Typography */

@@ -113,7 +113,7 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
         createdAt: new Date().toISOString(),
         name: quickLeadForm.name || "Quick Inquiry Lead",
         phone: quickLeadForm.phone || "",
-        location: quickLeadForm.location || "Kalyani",
+        location: quickLeadForm.location || "Online Visitor",
         lender: quickServiceModal.category === "old_gold" ? "Physical Gold" : "Bank / NBFC",
         goldGrams: quickUploadedFile
           ? `File: ${quickUploadedFile.name} (${quickUploadedFile.size})`
@@ -231,7 +231,7 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                         createdAt: new Date().toISOString(),
                         name: name || "Website Inquiry",
                         phone: phone || "",
-                        location: "Kalyani",
+                        location: "Online Visitor",
                         lender: lender || "Not specified",
                         goldGrams: grams,
                         loanAmount: loanAmount ? loanAmount.replace(/[^0-9]/g, "") : undefined,

@@ -9,7 +9,7 @@ interface AuctionNoticeSectionProps {
 
 export const AuctionNoticeSection: React.FC<AuctionNoticeSectionProps> = () => {
   const urgentSettlementMsg =
-    "Hi MRAJ Jewelers, mujhe urgent gold loan settlement consultation chahiye. Please guide me immediately.";
+    "Hi MRAJ Jewelers, I need an urgent gold loan settlement consultant. Mere bank auction notice / overdue loan settlement ke liye please guide me immediately.";
   const urgentWhatsappUrl = `https://wa.me/918101121813?text=${encodeURIComponent(urgentSettlementMsg)}`;
 
   const handleOpenUrgentWhatsApp = (e?: React.MouseEvent) => {

@@ -42,7 +42,7 @@ export const WhatsAppCategoryModal: React.FC<WhatsAppCategoryModalProps> = ({
       icon: <Landmark size={20} className="text-amber-400" />,
       badge: "Most Popular",
       badgeColor: "bg-amber-950/80 text-amber-300 border-amber-500/40",
-      message: `Hi MRAJ Jewelers, mujhe bank/lender se apna girvi sona chhudwane aur loan settlement ke baare mein baat karni hai (${selectedCity}).`,
+      message: `Hi MRAJ Jewelers, mujhe bank/lender se apna girvi sona chhudwane aur gold loan settlement ke baare mein baat karni hai. Please guide me.`,
     },
     {
       id: "sell_old_gold",
@@ -51,7 +51,7 @@ export const WhatsAppCategoryModal: React.FC<WhatsAppCategoryModalProps> = ({
       icon: <Sparkles size={20} className="text-[var(--gold-primary)]" />,
       badge: "Spot Cash",
       badgeColor: "bg-[rgba(212,175,55,0.15)] text-[var(--gold-light)] border-[rgba(212,175,55,0.3)]",
-      message: `Hi MRAJ Jewelers, mere paas purana sona / jewellery hai aur mujhe best rate par cash mein bechna hai (${selectedCity}).`,
+      message: `Hi MRAJ Jewelers, mere paas purana sona / jewellery hai aur mujhe best live rate par cash mein bechna hai. Please guide me.`,
     },
     {
       id: "auction_relief",
@@ -67,7 +67,7 @@ export const WhatsAppCategoryModal: React.FC<WhatsAppCategoryModalProps> = ({
       title: "General Inquiry / Other Question",
       sublabel: "Gold rates, branch visit ya koi anya sawal",
       icon: <HelpCircle size={20} className="text-emerald-400" />,
-      message: `Hi MRAJ Jewelers, mujhe aapke gold services ke baare mein jaankari chahiye (${selectedCity}).`,
+      message: `Hi MRAJ Jewelers, mujhe aapke gold services aur live valuation ke baare mein jaankari chahiye. Please guide me.`,
     },
   ];
 

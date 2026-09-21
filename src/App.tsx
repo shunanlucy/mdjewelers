@@ -89,7 +89,7 @@ export function App() {
 
   // Primary WhatsApp URL with target phone number (81011 21813)
   const whatsappUrl = `https://wa.me/918101121813?text=${encodeURIComponent(
-    `Hello MRAJ JEWELERS, I want to inquire about Gold Loan Settlement & Jewellery Release in ${selectedCity}. Please guide me.`
+    `Hello MRAJ JEWELERS, I want to inquire about Gold Loan Settlement & Jewellery Valuation. Please guide me.`
   )}`;
 
   // Handlers

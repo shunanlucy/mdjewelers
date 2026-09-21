@@ -46,7 +46,13 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
 }) => {
   // Main Lead Form state
   const [submitted, setSubmitted] = useState(false);
-  const [uploadedFile, setUploadedFile] = useState<{ name: string; size: string } | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<{
+    name: string;
+    size: string;
+    previewUrl?: string;
+    isImage?: boolean;
+    type?: "document" | "photo";
+  } | null>(null);
 
   // Quick Service Modal Form state
   const [quickLeadSubmitted, setQuickLeadSubmitted] = useState(false);
@@ -245,7 +251,11 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                           ? {
                               name: uploadedFile.name,
                               size: uploadedFile.size,
-                              type: "document" as const,
+                              previewUrl: uploadedFile.previewUrl,
+                              isImage: uploadedFile.isImage,
+                              type:
+                                uploadedFile.type ||
+                                (dialogSource.includes("old_gold") ? "photo" : "document"),
                             }
                           : undefined,
                       };
@@ -339,14 +349,24 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                         <span className="text-[10px] text-[var(--gold-light)] font-normal">Optional (Slip / Bill / Notice)</span>
                       </label>
                       {uploadedFile ? (
-                        <div className="flex items-center justify-between gap-2 rounded-xl border border-emerald-500/40 bg-emerald-950/30 p-2.5">
-                          <div className="flex items-center gap-2 min-w-0">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 shrink-0">
-                              <FileText size={16} />
-                            </div>
+                        <div className="flex items-center justify-between gap-2.5 rounded-xl border border-emerald-500/40 bg-emerald-950/30 p-2.5">
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            {uploadedFile.isImage && uploadedFile.previewUrl ? (
+                              <img
+                                src={uploadedFile.previewUrl}
+                                alt="Upload Preview"
+                                className="h-10 w-10 rounded-lg object-cover border border-emerald-500/40 shrink-0"
+                              />
+                            ) : (
+                              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400 shrink-0">
+                                <FileText size={18} />
+                              </div>
+                            )}
                             <div className="min-w-0">
                               <p className="text-xs font-bold text-white truncate">{uploadedFile.name}</p>
-                              <p className="text-[10px] text-emerald-400">{uploadedFile.size} • Ready to submit</p>
+                              <p className="text-[10px] text-emerald-400 flex items-center gap-1">
+                                <Check size={10} /> {uploadedFile.size} • Ready to submit
+                              </p>
                             </div>
                           </div>
                           <button
@@ -366,11 +386,32 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                             onChange={(e) => {
                               const file = e.target.files?.[0];
                               if (file) {
+                                const isImg = file.type.startsWith("image/");
                                 const sizeStr =
                                   file.size > 1024 * 1024
                                     ? (file.size / (1024 * 1024)).toFixed(1) + " MB"
                                     : Math.round(file.size / 1024) + " KB";
-                                setUploadedFile({ name: file.name, size: sizeStr });
+
+                                if (isImg) {
+                                  const reader = new FileReader();
+                                  reader.onloadend = () => {
+                                    setUploadedFile({
+                                      name: file.name,
+                                      size: sizeStr,
+                                      previewUrl: reader.result as string,
+                                      isImage: true,
+                                      type: dialogSource.includes("old_gold") ? "photo" : "document",
+                                    });
+                                  };
+                                  reader.readAsDataURL(file);
+                                } else {
+                                  setUploadedFile({
+                                    name: file.name,
+                                    size: sizeStr,
+                                    isImage: false,
+                                    type: "document",
+                                  });
+                                }
                                 trackEvent("file_upload", `Lead Doc: ${file.name}`);
                               }
                             }}

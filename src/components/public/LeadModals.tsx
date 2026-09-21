@@ -223,6 +223,7 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                       const phone = formData.get("phone") as string;
                       const lender = formData.get("lender") as string;
                       const grams = formData.get("grams") as string;
+                      const loanAmount = formData.get("loan_amount") as string;
                       const serviceType = formData.get("service_type") as string;
                       const existing = JSON.parse(localStorage.getItem("mraj_customer_leads") || "[]");
                       const newLeadEntry = {
@@ -233,6 +234,7 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                         location: "Kalyani",
                         lender: lender || "Not specified",
                         goldGrams: grams,
+                        loanAmount: loanAmount ? loanAmount.replace(/[^0-9]/g, "") : undefined,
                         serviceType: dialogSource.includes("old_gold")
                           ? "Sell Old Gold & Jewellery"
                           : dialogSource.includes("auction")
@@ -311,23 +313,26 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                       />
                     </div>
 
-                    <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-2.5">
-                      <div>
-                        <label className="text-[11px] min-[360px]:text-xs font-bold text-slate-300 block mb-1">
-                          Lender (Branch)
-                        </label>
-                        <select
-                          name="lender"
-                          defaultValue={selectedLender}
-                          className="form-input text-xs font-semibold"
-                        >
-                          {lendersList.map((l) => (
-                            <option key={l.name} value={l.name} className="bg-[#181824] text-white">
-                              {l.name}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                    {/* Lender Selection */}
+                    <div>
+                      <label className="text-[11px] min-[360px]:text-xs font-bold text-slate-300 block mb-1">
+                        Lender (Branch)
+                      </label>
+                      <select
+                        name="lender"
+                        defaultValue={selectedLender}
+                        className="form-input text-xs sm:text-sm font-semibold"
+                      >
+                        {lendersList.map((l) => (
+                          <option key={l.name} value={l.name} className="bg-[#181824] text-white">
+                            {l.name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* 2-Part Row: Approx Gold (Grams) & Loan Amount (₹) */}
+                    <div className="grid grid-cols-2 gap-2.5">
                       <div>
                         <label className="text-[11px] min-[360px]:text-xs font-bold text-slate-300 block mb-1">
                           Approx Gold (Grams)
@@ -337,7 +342,18 @@ export const LeadModals: React.FC<LeadModalsProps> = ({
                           inputMode="numeric"
                           placeholder="e.g. 50g"
                           defaultValue={`${goldGrams}g`}
-                          className="form-input text-xs"
+                          className="form-input text-xs sm:text-sm"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[11px] min-[360px]:text-xs font-bold text-slate-300 block mb-1">
+                          Loan Amount (₹)
+                        </label>
+                        <input
+                          name="loan_amount"
+                          inputMode="numeric"
+                          placeholder="e.g. ₹1,50,000"
+                          className="form-input text-xs sm:text-sm"
                         />
                       </div>
                     </div>

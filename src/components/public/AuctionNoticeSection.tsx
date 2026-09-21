@@ -8,7 +8,33 @@ interface AuctionNoticeSectionProps {
 }
 
 export const AuctionNoticeSection: React.FC<AuctionNoticeSectionProps> = () => {
-  const hiWhatsappUrl = "https://wa.me/918101121813?text=Hi";
+  const urgentSettlementMsg =
+    "Hi MRAJ Jewelers, mujhe urgent gold loan settlement consultation chahiye. Please guide me immediately.";
+  const urgentWhatsappUrl = `https://wa.me/918101121813?text=${encodeURIComponent(urgentSettlementMsg)}`;
+
+  const handleOpenUrgentWhatsApp = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    trackEvent("button_click", "Auction Alert Urgent Consultant WhatsApp Button");
+    try {
+      const existing = JSON.parse(localStorage.getItem("mraj_customer_leads") || "[]");
+      const newLeadEntry = {
+        id: "wa-" + Date.now(),
+        createdAt: new Date().toISOString(),
+        name: "Urgent Settlement Inquiry",
+        phone: "In WhatsApp Chat",
+        location: "Online Visitor",
+        serviceType: "Urgent Settlement Consultant",
+        category: "auction_relief" as const,
+        lender: "Auction Notice Alert",
+        status: "New" as const,
+        notes: `Customer requested urgent gold loan settlement consultation via WhatsApp.`,
+      };
+      localStorage.setItem("mraj_customer_leads", JSON.stringify([newLeadEntry, ...existing]));
+    } catch (err) {
+      console.error(err);
+    }
+    window.open(urgentWhatsappUrl, "_blank");
+  };
 
   return (
     <section
@@ -19,10 +45,7 @@ export const AuctionNoticeSection: React.FC<AuctionNoticeSectionProps> = () => {
         {/* COMPACT & RESPONSIVE VIDEO BUTTON CARD */}
         <div className="w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[660px] mx-auto">
           <div
-            onClick={() => {
-              trackEvent("card_click", "Auction Alert Video Card");
-              window.open(hiWhatsappUrl, "_blank");
-            }}
+            onClick={handleOpenUrgentWhatsApp}
             className="group relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-[rgba(212,175,55,0.3)] shadow-[0_10px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(212,175,55,0.12)] bg-black cursor-pointer transition-all duration-300 hover:border-[var(--gold-primary)] hover:shadow-[0_12px_45px_rgba(212,175,55,0.22)]"
           >
             <video
@@ -46,20 +69,14 @@ export const AuctionNoticeSection: React.FC<AuctionNoticeSectionProps> = () => {
 
             {/* Compact WhatsApp Action Button */}
             <div className="absolute bottom-2 right-2 sm:bottom-3.5 sm:right-4 z-20">
-              <a
-                href={hiWhatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  trackEvent("button_click", "Auction Alert Consult WhatsApp Button");
-                  window.open(hiWhatsappUrl, "_blank");
-                }}
-                className="btn-whatsapp flex items-center justify-center gap-1.5 py-1.5 sm:py-2.5 px-3 sm:px-4 text-[10.5px] min-[360px]:text-xs sm:text-xs font-bold shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-105 active:scale-95 transition-all duration-200"
+              <button
+                type="button"
+                onClick={handleOpenUrgentWhatsApp}
+                className="btn-whatsapp flex items-center justify-center gap-1.5 py-1.5 sm:py-2.5 px-3 sm:px-4 text-[10.5px] min-[360px]:text-xs sm:text-xs font-bold shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
               >
                 <MessageCircle size={14} className="text-white shrink-0 sm:w-4 sm:h-4" />
                 <span className="whitespace-nowrap">Consult on WhatsApp</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
